@@ -1,0 +1,5 @@
+const menu=document.getElementById("menu"),nav=document.getElementById("nav");if(menu)menu.addEventListener("click",()=>nav.classList.toggle("open"));
+document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+document.querySelectorAll(".gaurav-btn,.gaurav-card,.gaurav-link").forEach(el=>el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();el.style.setProperty("--mx",`${e.clientX-r.left}px`);el.style.setProperty("--my",`${e.clientY-r.top}px`)}));
+const glow=document.querySelector(".cursor-glow");window.addEventListener("pointermove",e=>{if(glow){glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px"}});
+const links=[...document.querySelectorAll(".nav-link")],sections=[...document.querySelectorAll("main section[id]")];const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+e.target.id))}}),{rootMargin:"-35% 0px -55%"});sections.forEach(s=>io.observe(s));
